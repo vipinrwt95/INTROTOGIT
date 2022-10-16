@@ -20,8 +20,16 @@
 //{
   // items[i].style.fontWeight="900"; 
 //}
-let item=document.getElementsByTagName("li")
-let itemlist=document.getElementsByClassName("list-group-item")
-console.log(itemlist);
-console.log(itemlist[1])
-item[4].textContent="Changed li";
+//let item=document.getElementsByTagName("li")
+//let itemlist=document.getElementsByClassName("list-group-item")
+//console.log(itemlist);
+//console.log(itemlist[1])
+//item[4].textContent="Changed li";
+let item = document.querySelectorAll('li');
+item[1].style.backgroundColor='green';
+let odd=document.querySelectorAll('li:nth-child(odd)');
+for(let i=0;i<odd.length;i++)
+{
+  odd[i].style.backgroundColor='green';
+}
+
