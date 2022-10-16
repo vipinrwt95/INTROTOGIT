@@ -14,3 +14,9 @@ let title2=document.getElementsByClassName("title")
 //document.getElementById('header-title').innerText="SUPRERMO";
 title2[0].innerHTML='<h2><b>Add Items</b></h2>';
 title2[0].style.color="green";
+let items=document.getElementsByClassName("list-group-item")
+items[2].style.backgroundColor='green';
+for(i=0;i<items.length;i++)
+{
+   items[i].style.fontWeight="900"; 
+}
