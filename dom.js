@@ -33,7 +33,7 @@
 //  odd[i].style.backgroundColor='green';
 //}
 
-let itemlist=document.querySelector('#items')
+//let itemlist=document.querySelector('#items')
 //console.log(itemlist.parentNode);
 //itemlist.parentNode.style.backgroundColor='blue';
 //console.log(itemlist.parentNode.parentNode)
@@ -64,7 +64,7 @@ let itemlist=document.querySelector('#items')
 
 // create element
 // creating a div
-let newDiv=document.createElement('div')
+/*let newDiv=document.createElement('div')
 //adding class
 newDiv.className='hello';
 //adding id
@@ -108,7 +108,193 @@ let target=document.querySelector('div .list-group');
 let target2=document.querySelector('ul li');
 console.log(target);
 console.log(target2);
-target.insertBefore(newElement,target2);
+target.insertBefore(newElement,target2);*/
+
+
+//adding EDIT button 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*form.addEventListener('submit',addItem);
+
+//adding item function
+
+function addItem(e)
+{
+  e.preventDefault();
+  //GET Input value
+  let newitem=document.getElementById('item').value; 
+  if(newitem=="")
+  { 
+    alert("fill item please")
+    return;
+  }
+  
+  //create new li items
+  let li=document.createElement('li')
+  //add class
+  li.className='list-group-item';
+  console.log(li);
+  // add textnode with input value
+  li.appendChild(document.createTextNode(newitem));
+  // create delete button element
+  let delbutton=document.createElement('button');
+  let editbutton=document.createElement('button2');
+
+  //add classe to del button
+   
+  delbutton.className='btn btn-danger btn-sm float-right delete'; 
+  editbutton.className="buuutton";
+  //APPEND TEXT NODE
+
+  delbutton.appendChild(document.createTextNode('x'));
+  editbutton.appendChild(document.createTextNode('EDIT'));
+
+  //append button to li
+  li.appendChild(delbutton);
+  li.appendChild(editbutton)
+
+  //append li to list
+  itemlist.appendChild(li); 
+}
+
+//delete event
+//removing last child when clicked on delete button
+
+//itemlist.addEventListener('click',removeItem)
+
+function removeItem(e)
+{
+  if(e.target.classList.contains('delete'))
+  {
+    if(confirm('Are you sure'))
+    {
+      let last=itemlist.lastElementChild;
+      //console.log(li);
+      itemlist.removeChild(last);
+    }
+    
+  }
+
+} */
+
+// adding one more box for adding description of item;
+let desctarget=document.querySelectorAll('#addForm');
+let desc = document.createElement('input');
+let submit=document.querySelector('.btn btn-dark');
+desc.id="description";
+desc.className="form-control mr-2";
+//console.log(desctarget);
+
+
+const list1 = document.getElementById("addForm");
+let target=list1.lastElementChild;
+//console.log(list1);
+//console.log(desctarget);
+list1.insertBefore(desc,target)
+
+//adding text to list and adding description below the item on list;
+
+let form=document.getElementById('addForm');
+let itemlist=document.getElementById('items');
+
+form.addEventListener('submit',addItem)
+
+function addItem(e)
+{ // PREVENTING DEFAULT
+  e.preventDefault();
+
+  // COLLECTING VALUE OF INPUT ELEMENT
+
+  let newitem=document.getElementById('item').value;
+  
+  let desc = document.getElementById('description').value;
+
+  if(newitem==""||desc=="")
+  {
+    alert("fill both");
+  }
+
+  // after filling both add these to list which will be displayed
+  let del=document.createElement('button')
+  let li=document.createElement('li')
+  let info=document.createElement('text')
+  //add class
+  li.className='list-group-item';
+  //console.log(li);
+  info.className='info';
+
+  del.className='btn btn-danger btn-sm float-right delete';
+  // add textnode with input value
+  li.appendChild(document.createTextNode(newitem));
+  info.appendChild(document.createTextNode(desc));
+  del.appendChild(document.createTextNode('x'))
+
+  
+  let itemlist=document.querySelector('#items');
+
+  itemlist.appendChild(li);
+  itemlist.appendChild(li).appendChild(del)
+  itemlist.appendChild(info);
+  
+}
+
+let search = document.getElementById('filter');
+search.addEventListener('keyup',searchitem)
+
+function searchitem(e)
+{
+   let word=e.target.value.toLowerCase();
+  console.log(word);
+  let itemlist=document.querySelector('#items');
+
+  let items=itemlist.getElementsByTagName('li')
+  let desc=itemlist.getElementsByClassName('info');
+  
+  Array.from(items).forEach(function(item)
+  {
+    let itemname=item.firstChild.textContent;
+
+   if(itemname.toLowerCase().indexOf(word)!=-1)
+   {
+    item.style.display='block';
+   }
+   else
+   item.style.display='none';
+  }); 
+ Array.from(desc).forEach(function(item)
+{
+let description=item.firstChild.textContent;
+
+if(description.toLowerCase().indexOf(word)!=-1)
+{
+  item.style.display="block";
+}
+else item.style.display="none";
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
